@@ -23,14 +23,15 @@ export default function Textform(props) {
 
     }
 
-    const [text, setText] = useState('Enter Text Here');
+    const [text, setText] = useState('');
 
     {/*What this will do is, text naam ka variable hai, so jo text useState() ke andar hai that will be stored in text. And if we wish to change the value of the text, we will do it by setText(). 
     text = "new Text" is Wrong
     setText("new Text") is Correct  */}
 
     return (
-        <div>
+        <>
+        <div className='container'>
             <h1>{props.heading}</h1>
             <div className="mb-3">
                 {/*Whenever the text is changed, it will be updated in the value part in text area*/}
@@ -41,5 +42,14 @@ export default function Textform(props) {
             <br />
             <button className="btn btn-primary" onClick={ToLowerCase}>To LowerCase</button>
         </div>
+        <div className="container my-3">
+            <h1>Summary of the Input</h1>
+            <p>It has {text.length} characters and {text.split(" ").length} words</p> {/*split is a function which will split the text into words and will return the number of words and text.length will show us the length i.e no of characters in the text*/}
+            <p>Time taken to read the text = {0.008 * text.split(" ").length} seconds</p>
+            <h3>Preview:</h3>
+            <textarea className="form-control" value={text} onChange={handleOnChange} id="myText" rows="1"></textarea>
+            {/* <p>{text}</p> */}
+        </div>
+        </>
     )
 }
