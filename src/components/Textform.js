@@ -35,7 +35,9 @@ export default function Textform(props) {
             <h1>{props.heading}</h1>
             <div className="mb-3">
                 {/*Whenever the text is changed, it will be updated in the value part in text area*/}
-                <textarea className="form-control" value={text} onChange={handleOnChange} id="myText" rows="8"></textarea>
+                <textarea className="form-control" value={text} onChange={handleOnChange} style={{
+                    backgroundColor: props.mode === 'light' ? 'aqua' : 'pink'
+                }} id="myText" rows="8"></textarea>
             </div>
             <button className="btn btn-primary" onClick={ToUpperCase}>To UpperCase</button>
             <br />
@@ -47,8 +49,7 @@ export default function Textform(props) {
             <p>It has {text.length} characters and {text.split(" ").length} words</p> {/*split is a function which will split the text into words and will return the number of words and text.length will show us the length i.e no of characters in the text*/}
             <p>Time taken to read the text = {0.008 * text.split(" ").length} seconds</p>
             <h3>Preview:</h3>
-            <textarea className="form-control" value={text} onChange={handleOnChange} id="myText" rows="1"></textarea>
-            {/* <p>{text}</p> */}
+            <p>{text.length>0?text:"Enter Something to Preview"}</p>
         </div>
         </>
     )

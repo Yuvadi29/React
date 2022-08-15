@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 {/* Props acts as properties jisse we can add the titles of websites etc.*/ }
 export default function Navbar(props) {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">{props.title}</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,10 +19,14 @@ export default function Navbar(props) {
                     {/* <li className="nav-item">
                         <a className="nav-link" href="/">{props.aboutText}</a>
                     </li> */}
-                    <form className="d-flex">
+                    {/* <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-danger" type="submit">Search</button>
-                    </form>
+                    </form> */}
+                    <div className={`form-check form-switch text-${props.mode === 'light' ? 'yellow' : 'light'}`}> {/*Using Ternary operator with condition to tell if the mode of navbar is light turn it to dark and vice versa */}
+                        <input className="form-check-input" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault"/>
+                        <label htmlFor="flexSwitchCheckDefault" className="form-check-label">Change Mode</label>
+                    </div>
                 </div>
             </div>
         </nav>
