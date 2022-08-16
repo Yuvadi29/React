@@ -1,32 +1,33 @@
 // import logo from './logo.svg';
 import './App.css';
+import About from './components/About';
+import Navbar from './components/Navbar';
+import Textform from './components/Textform';
+import React, {useState} from 'react';
 
 let name = "<b>Aditya</b>";
 function App() {
+  const [mode,setMode] = useState('light'); //It will enable us to see whether the dark mode is enabled or not
+  //This function will toggle the Navbar color to light and dark
+  const toggleMode = () =>{
+    if(mode === 'light'){
+      setMode('yellow');
+      document.body.style.backgroundColor = 'yellow';
+    }
+    else {
+      setMode('light');
+      document.body.style.backgroundColor = 'white';
+    }
+  }
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">First App</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
-            </ul>
-              <li className="nav-item">
-                <a className="nav-link" href="/">About</a>
-              </li>
-            <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+    <Navbar title="ReactApp" mode={mode} toggleMode={toggleMode}/>
+    <div className="container my-3">
+    <Textform heading="Enter your Name" mode={mode}/>
+    {/* <About/> */}
+    </div>
+      {/* <Navbar title="React Website" aboutText="About React"/>  */}
+      {/* Returns my Navbar component which is created in the Component Folder*/}
     </>
   );
 }
