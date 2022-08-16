@@ -36,7 +36,7 @@ export default function Textform(props) {
             <div className="mb-3">
                 {/*Whenever the text is changed, it will be updated in the value part in text area*/}
                 <textarea className="form-control" value={text} onChange={handleOnChange} style={{
-                    backgroundColor: props.mode === 'light' ? 'aqua' : 'pink'
+                    backgroundColor: props.mode === 'light' ? 'dark' : 'grey'
                 }} id="myText" rows="8"></textarea>
             </div>
             <button className="btn btn-primary" onClick={ToUpperCase}>To UpperCase</button>
