@@ -9,12 +9,15 @@ export default function Textform(props) {
         // console.log('Button is Clicked');
         let uptext = text.toUpperCase();
         setText(uptext);
+        props.showAlert("Converted to UpperCase", "success");
     }
 
     const ToLowerCase = () => {
         // console.log('Button is Clicked');
         let lowtext = text.toLowerCase();
         setText(lowtext);
+        props.showAlert("Converted to LowerCase", "success");
+
     }
 
     const handleOnChange = (event) => {
@@ -31,12 +34,12 @@ export default function Textform(props) {
 
     return (
         <>
-        <div className='container'>
+        <div className='container' style={{color: props.mode === 'dark'?'white':'#002D62'}}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
                 {/*Whenever the text is changed, it will be updated in the value part in text area*/}
                 <textarea className="form-control" value={text} onChange={handleOnChange} style={{
-                    backgroundColor: props.mode === 'light' ? 'dark' : 'grey'
+                    backgroundColor: props.mode === 'dark' ? '#13466e' : 'white', color: props.mode === 'dark'?'white':'#002D62'
                 }} id="myText" rows="8"></textarea>
             </div>
             <button className="btn btn-primary" onClick={ToUpperCase}>To UpperCase</button>
@@ -44,10 +47,10 @@ export default function Textform(props) {
             <br />
             <button className="btn btn-primary" onClick={ToLowerCase}>To LowerCase</button>
         </div>
-        <div className="container my-3">
+        <div className="container my-3" style={{color: props.mode === 'dark'?'white':'#002D62'}}>
             <h1>Summary of the Input</h1>
-            <p>It has {text.length} characters and {text.split(" ").length} words</p> {/*split is a function which will split the text into words and will return the number of words and text.length will show us the length i.e no of characters in the text*/}
-            <p>Time taken to read the text = {0.008 * text.split(" ").length} seconds</p>
+            <p>It has {text.length} characters and {text.split(" ").filter((element)=>{ return element.length!==0}).length} words</p> {/*split is a function which will split the text into words and will return the number of words and text.length will show us the length i.e no of characters in the text*/}
+            <p>Time taken to read the text = {0.008 * text.split(" ").filter((element)=>{ return element.length!==0}).length} Minutes</p>
             <h3>Preview:</h3>
             <p>{text.length>0?text:"Enter Something to Preview"}</p>
         </div>
