@@ -9,7 +9,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom"
 
 // let name = "<b>Aditya</b>";
@@ -52,9 +51,9 @@ function App() {
 
           {/*A Switch looks through its childeren Routes and renders the first one that matches the current URL */}
 
-          <Switch>
+           <Switch>
             <Route exact path="/about">
-              <About />
+              <About mode={mode}/>
             </Route>
             <Route exact path="/">
               <Textform showAlert={showAlert} heading="Enter your text" mode={mode} />
