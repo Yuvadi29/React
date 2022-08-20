@@ -27,20 +27,33 @@ function App() {
       setAlert(null);
     }, 1500);
   }
+
+
+  const removeBodyClasses = ()=> {
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-succes')
+  }
   //This function will toggle the Navbar color to light and dark
-  const toggleMode = () => {
-    if (mode === 'light') {
-      setMode('dark');
-      document.body.style.backgroundColor = '#002D62';
-      showAlert("Dark Mode Enabled", "success");
-      document.title = 'React - Dark mode';
-    }
-    else {
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
-      showAlert("Light Mode Enabled", "success");
-      document.title = 'React - Light mode';
-    }
+  const toggleMode = (cls) => {
+    removeBodyClasses()
+    console.log(cls) 
+    document.body.classList.add('bg-'+cls)
+    // if (mode === 'light') {
+      //     setMode('dark');
+      //     document.body.style.backgroundColor = '#002D62';
+      //     showAlert("Dark Mode Enabled", "success");
+      //     document.title = 'React - Dark mode';
+      //   }
+      //   else {
+      //     setMode('light');
+      //     document.body.style.backgroundColor = 'white';
+      //     showAlert("Light Mode Enabled", "success");
+      //     document.title = 'React - Light mode';
+      //   }
+      // }
   }
   return (
     <>
