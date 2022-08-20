@@ -34,20 +34,20 @@ export default function Textform(props) {
 
     return (
         <>
-        <div className='container' style={{color: props.mode === 'dark'?'white':'#002D62'}}>
+        <div className='container' style={{color: props.mode === 'dark'?'white':'purple'}}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
                 {/*Whenever the text is changed, it will be updated in the value part in text area*/}
                 <textarea className="form-control" value={text} onChange={handleOnChange} style={{
-                    backgroundColor: props.mode === 'dark' ? '#13466e' : 'white', color: props.mode === 'dark'?'white':'#002D62'
+                     color: props.mode === 'dark'?'white':'purple'
                 }} id="myText" rows="8"></textarea>
             </div>
-            <button className="btn btn-primary" onClick={ToUpperCase}>To UpperCase</button>
+            <button disabled={text.length===0}className="btn btn-primary" onClick={ToUpperCase}>To UpperCase</button>
             <br />
             <br />
-            <button className="btn btn-primary" onClick={ToLowerCase}>To LowerCase</button>
+            <button disabled={text.length===0}className="btn btn-primary" onClick={ToLowerCase}>To LowerCase</button>
         </div>
-        <div className="container my-3" style={{color: props.mode === 'dark'?'white':'#002D62'}}>
+        <div className="container my-3" style={{color: props.mode === 'dark'?'white':'purple'}}>
             <h1>Summary of the Input</h1>
             <p>It has {text.length} characters and {text.split(" ").filter((element)=>{ return element.length!==0}).length} words</p> {/*split is a function which will split the text into words and will return the number of words and text.length will show us the length i.e no of characters in the text*/}
             <p>Time taken to read the text = {0.008 * text.split(" ").filter((element)=>{ return element.length!==0}).length} Minutes</p>
